@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My own funnctions from an object</title>
+  </head>
+  <body>
+    <h1>Car Adventures!</h1>
+    <h2>
+      Type "h" to honk, "d" to drive to work, "w" to drive around the world, or
+      "t" to get a tuneup.
+    </h2>
+    <h2>See console for car stats.</h2>
+  </body>
+
+  <script type="text/javascript">
+    var car = {
+      make: 'Land Rover',
+      color: 'Gold',
+      model: 'Discovery',
+      mileage: 100000,
+      isWorking: true,
+      driveToWork: function() {
+        alert('This is the current mileage ' + this.mileage);
+        this.mileage = this.mileage + 80;
+        alert('This is the current mileage ' + this.mileage);
+      },
+      driveAroundWorld: function() {
+        alert(
+          'This is the mileage before your trip around the world ' +
+            this.mileage
+        );
+        this.isWorking = false;
+        this.mileage = this.mileage + 5000;
+
+        alert(
+          'This is the mileage after your trip around the world ' + this.mileage
+        );
+      },
+      getTuneUp: function() {
+        alert("It's tune-up time");
+        alert('Confirm you want to tune up');
+        this.isWorking = true;
+      },
+      honk: function() {
+        alert('Honk Honk Honk..........');
+      }
+    };
+
+    function reWriteStats() {
+      console.log('Make: ' + car.make);
+      console.log('Model: ' + car.model);
+      console.log('Color:' + car.color);
+      console.log('Mileage: ' + car.mileage);
+      console.log('Is Working: ' + car.isWorking);
+      console.log('------------------------------');
+    }
+
+    document.onkeyup = function(event) {
+      if (event.key === 'h') {
+        car.honk();
+        reWriteStats();
+      }
+      if (event.key === 'd') {
+        car.driveAroundWorld();
+        reWriteStats();
+      }
+      if (event.key === 'w') {
+        car.driveToWork();
+        reWriteStats();
+      }
+      if (event.key === 't') {
+        car.getTuneUp();
+        reWriteStats();
+      }
+    };
+  </script>
+</html>
